@@ -9,13 +9,15 @@ const port = 3000;
 
 app.get("/", (req, res) => {
     var today = new Date();
+    const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     var weekdayInt = today.getDay();
+    // var weekdayInt = 5;
+    var weekdayName = dayNames[weekdayInt];
     
-    if (weekdayInt === 6 || weekdayInt === 0) {
-        res.send("<h1>It is the weekend! :)</h1>");
-    } else {
-        res.sendFile(__dirname + "/index.html")
-    };
+    
+        var day = weekdayName;
+     
+    res.render("list", {kindOfDay: day});
 });
 
 app.listen(port, () =>{
