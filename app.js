@@ -1,5 +1,5 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
 
 const app = express();
 
@@ -10,6 +10,6 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () =>{
-    console.log('server started on port ' + port);
-})
+    console.log('Server started on port ' + port);
+});
 
