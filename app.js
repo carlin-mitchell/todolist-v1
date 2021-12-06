@@ -4,12 +4,15 @@ const ejs = require('ejs');
 
 const app = express();
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended: true}))
 
 const port = 3000;
-
+let userAddedItems = ["First things first", "Second things second", "Third things third"];
 app.get("/", (req, res) => {
+
+
     // Generate a string of todays date and pass it to the template
-    var today = new Date();
+    let today = new Date();
     
     dateDisplayOptions = {
     weekday: 'long', 
@@ -17,10 +20,17 @@ app.get("/", (req, res) => {
     month: 'long', 
     day: 'numeric'}
 
-    var dateToday = today.toLocaleDateString("en-US", dateDisplayOptions);
+    let dateToday = today.toLocaleDateString("en-US", dateDisplayOptions);
     
     // send the rendered template to the requestor
-    res.render("list", {fullDate: dateToday});
+    res.render("list", {fullDate: dateToday, userAddedItems: userAddedItems});
+});
+
+app.post("/", (req, res) => {
+    let userInput = req.body.newItem;
+    userAddedItems.push(userInput);
+    
+    res.redirect('/');
 });
 
 app.listen(port, () =>{

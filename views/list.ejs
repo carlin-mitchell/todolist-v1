@@ -13,13 +13,12 @@
     <h1><%= fullDate %>!</h1>
 
     <ul>
-        <li>First things first</li>
-        <li>Second things second</li>
-        <li>Third things third</li>
-    </ul>
-
+        <% userAddedItems.forEach(element => { %>
+            <li><%= element %></li>
+        <% }) %>
+    </ul>  
     <form action="/" method="post">
-        <input type="text" name="newItem">
+        <input type="text" name="newItem" autofocus>
         <button type="submit">Add</button>
     </form>
 
