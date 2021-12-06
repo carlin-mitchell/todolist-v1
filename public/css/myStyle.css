@@ -1,0 +1,16 @@
+:root {
+    --darkBlue: rgb(34, 87, 126);
+    --middleBlue: rgb(85, 132, 172);
+    --lightBlue: rgb(149, 209, 204);
+    --lightCream: rgb(246, 242, 212);
+}
+
+html {
+    background-image: -webkit-linear-gradient(70deg, var(--middleBlue) 50%, var(--lightBlue)50%);
+    min-height: 1000px;
+}
+
+.date-box{
+    margin: 50px auto;
+    max-width: 400px;
+}

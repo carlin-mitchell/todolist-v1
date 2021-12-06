@@ -4,7 +4,9 @@ const ejs = require('ejs');
 
 const app = express();
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(express.static("public"))
 
 const port = 3000;
 let userAddedItems = ["First things first", "Second things second", "Third things third"];
