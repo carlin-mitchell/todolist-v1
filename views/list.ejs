@@ -18,9 +18,8 @@
 <body>
 
     <div id="heading" class="box">
-        <h1><%= fullDate %></h1>
+        <h1><%= listTitle %></h1>
     </div>
-
 
     <div class="box">
 
@@ -29,18 +28,18 @@
             <input type="checkbox">
             <p><%= element %></p>
         </div>
-        <% }) %>
+        <% }) %> 
 
-
+         
         <form class="item" action="/" method="post">
-            <input type="text" name="newItem" placeholder="New item" autofocus autocomplete="off">
-            <button type="submit">+</button>
+                <input type="text" name="newItem" placeholder="New item" autofocus autocomplete="off">
+                <button type="submit" name="list" value= <%=listTitle%>>+</button>
         </form>
 
     </div>
-
-
-
+<footer>
+    Created by Carlin Mitchell<br>Based on a design by <a href="https://www.appbrewery.co/">The App Brewery</a> 
+</footer>
 </body>
 
 </html>
