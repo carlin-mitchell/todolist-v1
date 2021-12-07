@@ -1,32 +1,25 @@
+const port = 3000;
+
+// NPM modules--------------------------------------------
 const express = require("express");
 const bodyParser = require ("body-parser");
 const ejs = require('ejs');
 
+// local modules------------------------------------------
+const date = require(__dirname + '/local_modules/date.js');
+
 const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(express.static("public"))
 
-const port = 3000;
+const workListItems = [];
+const homeListItems = [];
 
-// Home route-----------------------------------------------------
-let homeListItems = [];
+// Home route---------------------------------------------
 app.get("/", (req, res) => {
-    
+    let dateToday = date.getDate();
 
-    // Generate a string of todays date and pass it to the template
-    let today = new Date();
-    
-    dateDisplayOptions = {
-    weekday: 'long', 
-    // year: 'numeric', 
-    month: 'long', 
-    day: 'numeric'}
-
-    let dateToday = today.toLocaleDateString("en-US", dateDisplayOptions);
-    
-    // send the rendered template to the requestor
     res.render("list", {listTitle: dateToday, userAddedItems: homeListItems});
 });
 
@@ -41,37 +34,27 @@ app.post("/", (req, res) => {
     }
 });
 
-
-// Work routes--------------------------------------------
-let workListItems = [];
+// Work route---------------------------------------------
 app.get('/work', (req,res) => {
-    
     res.render("list", {listTitle:"Work List", userAddedItems: workListItems});
-
+});
 app.post('/work', (req, res) => {
     let userInput = req.body.newItem;
     workListItems.push(userInput);
     
     res.redirect('/work');
 });
+
+// About route -------------------------------------------
+app.get("/about", (req, res) => {
+    res.render('about.ejs');
 });
 
 
-
-
-
-
-
+//
 app.listen(port, () =>{
     console.log('Server started on port ' + port);
 });
 
 
 
-
-// Old date code ------------------------------------------
-    // var today = new Date();
-    // const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    // var weekdayInt = today.getDay();
-    // // var weekdayInt = 5;
-    // var weekdayName = dayNames[weekdayInt];
