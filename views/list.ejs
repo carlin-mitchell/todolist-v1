@@ -1,22 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
-
-    <link rel="stylesheet" href="/css/style.css">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Murecho:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
+<%- include('header'); %> 
 
 <body>
-
     <div id="heading" class="box">
         <h1><%= listTitle %></h1>
     </div>
@@ -37,9 +21,5 @@
         </form>
 
     </div>
-<footer>
-    Created by Carlin Mitchell<br>Based on a design by <a href="https://www.appbrewery.co/">The App Brewery</a> 
-</footer>
-</body>
-
-</html>
+    
+<%- include('footer'); %> 
